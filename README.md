@@ -46,7 +46,7 @@ from brightdata import SyncBrightDataClient
 with SyncBrightDataClient(auto_create_zones=False) as client:
     product = client.scrape.amazon.products("https://www.amazon.com/dp/B0CRMZHDG8").data
     print(product["title"])
-    print(product["final_price"], product["currency"], "|", product["rating"], "stars |",
+    print(product.get("final_price"), product["currency"], "|", product["rating"], "stars |",
           product["reviews_count"], "reviews")
 ```
 
@@ -64,6 +64,11 @@ never touches, and zone creation fails on accounts without a payment method
 ([sdk-python#57](https://github.com/brightdata/sdk-python/issues/57)).
 
 `products` takes a URL, not an ASIN, so write an ASIN as a `/dp/` URL as above.
+
+Read prices with `.get()`. An out-of-stock product comes back with
+`is_available` set to `false` and no `final_price`, `initial_price`,
+`buybox_prices` or `availability` at all, so `product["final_price"]` raises
+`KeyError`.
 
 ## Or run it as a command
 
@@ -184,7 +189,7 @@ with SyncBrightDataClient(auto_create_zones=False) as client:
     ])
     for result in results:
         row = result.data
-        print(row["asin"], "|", row["brand"], "|", row["final_price"], row["currency"])
+        print(row["asin"], "|", row["brand"], "|", row.get("final_price"), row["currency"])
 ```
 
 ```
@@ -436,12 +441,16 @@ once, or use `bdata login --device` over SSH and in CI:
 
 ```bash
 npx -p @brightdata/cli bdata login
-npx -p @brightdata/cli bdata pipelines amazon_product "https://www.amazon.com/dp/B0CRMZHDG8"
+npx -p @brightdata/cli bdata pipelines run gd_l7q7dkf244hwjntr0 collect_by_url "https://www.amazon.com/dp/B0CRMZHDG8"
 ```
 
-`bdata pipelines list` prints every type. The Amazon ones are `amazon_product`,
-`amazon_product_reviews` and `amazon_product_search`. Each takes URLs, prints
-JSON, and costs one credit per record.
+This is the CLI 0.4.0 syntax; the older `bdata pipelines amazon_product` form
+was removed in that release. `bdata pipelines search amazon` finds the scraper
+ids. The Amazon ones are `gd_l7q7dkf244hwjntr0` (products),
+`gd_le8e811kzy4ggddlq` (reviews) and `gd_lwdb4vjm1ehb499uxs` (search), all with
+the `collect_by_url` method. `bdata pipelines info <id> collect_by_url` lists a
+scraper's input fields. Each takes URLs, prints JSON, and costs one credit per
+record.
 
 `npx skills add brightdata/skills` teaches Claude Code, Cursor and Codex these
 commands and the docs, so plain language works afterwards. Full guide:

@@ -70,7 +70,7 @@ jobs:
       - name: Install the package and the Bright Data CLI
         run: |
           pip install -e .
-          npm i -g @brightdata/cli@0.3.4  # pinned: this job holds the API secret
+          npm i -g @brightdata/cli@0.4.0  # pinned: this job holds the API secret
 
       - name: Do the README's links still resolve?
         run: |
@@ -310,7 +310,7 @@ jobs:
       - name: Install the package and, for CLI blocks, the Bright Data CLI
         run: |
           pip install -e .
-          if [ "${{ matrix.lang }}" = "bash" ]; then npm i -g @brightdata/cli@0.3.4; fi
+          if [ "${{ matrix.lang }}" = "bash" ]; then npm i -g @brightdata/cli@0.4.0; fi
       - name: Run block ${{ matrix.n }} exactly as the README shows it
         env:
           N: ${{ matrix.n }}
