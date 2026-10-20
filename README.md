@@ -1,9 +1,9 @@
 [![Scrape Amazon data with the Amazon Scraper API: products, reviews, sellers, search. Collect or discover by ASIN, keyword and UPC. Start free.](.github/banner.png)](https://brightdata.com/products/web-scraper/amazon?utm_source=github)
 
-# amazon-scraper-python
+# amazon-scraper
 
-[![Live check](https://github.com/brightdata/amazon-scraper-python/actions/workflows/live.yml/badge.svg)](https://github.com/brightdata/amazon-scraper-python/actions/workflows/live.yml)
-[![last verified](https://img.shields.io/badge/last%20verified-19%20Oct%202026-brightgreen)](https://github.com/brightdata/amazon-scraper-python/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->
+[![Live check](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml/badge.svg)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml)
+[![last verified](https://img.shields.io/badge/last%20verified-19%20Oct%202026-brightgreen)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->
 
 [Quickstart](#quickstart) · [Command](#or-run-it-as-a-command) · [Endpoints](#the-rest-of-the-api) · [Data](#the-data) · [Errors](#when-it-fails) · [Coding agents](#coding-agents) · [Docs](https://docs.brightdata.com/products/scrapers/amazon/introduction) · [Support](#support)
 
@@ -76,7 +76,7 @@ The command in this repo does the same for several ASINs and writes one JSON
 file.
 
 ```bash
-pip install git+https://github.com/brightdata/amazon-scraper-python
+pip install git+https://github.com/brightdata/amazon-scraper
 amazon-scraper B0CRMZHDG8 B085DVHQ57
 ```
 
@@ -471,11 +471,15 @@ Data connects to, from LangChain to Zapier and n8n:
 ## Support
 
 Bugs in this repo:
-[open an issue](https://github.com/brightdata/amazon-scraper-python/issues), and
+[open an issue](https://github.com/brightdata/amazon-scraper/issues), and
 [CONTRIBUTING.md](CONTRIBUTING.md) says what to put in it.
 Anything about the API, your account or your credits:
 [Bright Data support](https://brightdata.zendesk.com/hc/en-us/requests/new).
 
 ## License
 
-MIT.
+[Apache 2.0](LICENSE).
+
+## Node.js version
+
+The same Amazon scraper is available for Node.js: [brightdata/amazon-scraper-node](https://github.com/brightdata/amazon-scraper-node).

@@ -74,7 +74,7 @@ jobs:
 
       - name: Do the README's links still resolve?
         run: |
-          public=$(curl -s -o /dev/null -w '%{http_code}' https://github.com/brightdata/amazon-scraper-python)
+          public=$(curl -s -o /dev/null -w '%{http_code}' https://github.com/brightdata/amazon-scraper)
           failed=0
           for url in $(grep -ohE 'https?://[^ )>"`]+' README.md AGENTS.md | sed 's/[.,]$//' | sort -u); do
             case "$url" in
@@ -82,7 +82,7 @@ jobs:
               *zendesk.com/*) continue ;;    # answers 403 to anything that is not a browser
               *mcp.brightdata.com/*) continue ;;  # carries a placeholder token; nothing to check without a real one
               *api.brightdata.com/*) continue ;;  # needs the token; the field-table step below calls it for real
-              *github.com/brightdata/amazon-scraper-python*) [ "$public" = "200" ] || continue ;;  # unreachable on a private fork
+              *github.com/brightdata/amazon-scraper*) [ "$public" = "200" ] || continue ;;  # unreachable on a private fork
             esac
             code=$(curl -s -o /dev/null -L --retry 3 --max-time 30 -A "Mozilla/5.0" -w '%{http_code}' "$url" || echo 000)
             if [ "$code" = "200" ]; then echo "200 $url"; else echo "::error::$code $url"; failed=1; fi
@@ -161,7 +161,7 @@ jobs:
           PY
 
       - name: Regenerate the README field table from the live schema
-        if: always() && env.CHECK == 'true' && github.repository == 'brightdata/amazon-scraper-python'
+        if: always() && env.CHECK == 'true' && github.repository == 'brightdata/amazon-scraper'
         run: |
           python - <<'PY' | tee -a "$GITHUB_STEP_SUMMARY"
           import json
@@ -389,7 +389,7 @@ jobs:
     # `inputs.only` empty as well: a run of one block that passes is not the
     # README verified. A scheduled run has no inputs, where `inputs.only` is null
     # and this comparison is still true, so the daily and Monday runs set it.
-    if: always() && !cancelled() && github.event_name != 'push' && inputs.only == '' && github.repository == 'brightdata/amazon-scraper-python'
+    if: always() && !cancelled() && github.event_name != 'push' && inputs.only == '' && github.repository == 'brightdata/amazon-scraper'
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -413,7 +413,7 @@ jobs:
             label="last check failed"; color="red"
           fi
           today=$(date -u +'%-d %b %Y')
-          line="[![${label}](https://img.shields.io/badge/${label// /%20}-${today// /%20}-${color})](https://github.com/brightdata/amazon-scraper-python/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->"
+          line="[![${label}](https://img.shields.io/badge/${label// /%20}-${today// /%20}-${color})](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->"
           python3 - "$line" <<'PY'
           import pathlib, re, sys
           p = pathlib.Path("README.md"); t = p.read_text(encoding="utf-8")

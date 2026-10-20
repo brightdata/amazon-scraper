@@ -7,7 +7,7 @@ name = "amazon-scraper"
 version = "0.1.0"
 description = "Amazon scraper in Python: products, reviews, sellers and search as JSON, on the Bright Data Amazon Scraper API (Web Scraper API). No login, no browser. 5,000 free credits a month."
 readme = "README.md"
-license = { text = "MIT" }
+license = { text = "Apache-2.0" }
 requires-python = ">=3.10"
 dependencies = ["brightdata-sdk>=2.5.2,<3", "rich>=13,<16"]
 
@@ -18,7 +18,7 @@ dev = ["pytest>=8", "ruff>=0.6"]
 amazon-scraper = "amazon_scraper.__main__:main"
 
 [project.urls]
-Homepage = "https://github.com/brightdata/amazon-scraper-python"
+Homepage = "https://github.com/brightdata/amazon-scraper"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/amazon_scraper"]

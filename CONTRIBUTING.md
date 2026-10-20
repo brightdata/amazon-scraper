@@ -4,7 +4,7 @@ The most useful thing you can send us is a broken example.
 
 ## Report a bug
 
-[Open an issue](https://github.com/brightdata/amazon-scraper-python/issues) and include:
+[Open an issue](https://github.com/brightdata/amazon-scraper/issues) and include:
 
 - the command or the snippet you ran
 - what you expected, and what happened instead
