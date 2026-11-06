@@ -3,7 +3,7 @@
 # Amazon scraper for Python
 
 [![Live check](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml/badge.svg)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml)
-[![last verified](https://img.shields.io/badge/last%20verified-5%20Nov%202026-brightgreen)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->
+[![last verified](https://img.shields.io/badge/last%20verified-6%20Nov%202026-brightgreen)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->
 
 [Quickstart](#how-to-scrape-amazon-product-data-with-python) · [No PA-API](#scrape-amazon-without-the-product-advertising-api) · [CLI](#bulk-amazon-scraper-cli) · [Endpoints](#scrape-amazon-products-reviews-sellers-and-search-results) · [Data](#amazon-product-data-fields-json) · [Errors](#amazon-scraper-errors) · [MCP and Claude Code](#amazon-mcp-server-and-claude-code-skill) · [Free credits](#is-this-amazon-scraper-free) · [Docs](https://docs.brightdata.com/products/scrapers/amazon/introduction) · [Support](#support)
 
