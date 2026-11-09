@@ -499,3 +499,11 @@ Anything about the API, your account or your credits:
 ## Amazon scraper for Node.js
 
 The same Amazon scraper is available for Node.js: [brightdata/amazon-scraper-node](https://github.com/brightdata/amazon-scraper-node).
+
+## More open source scrapers from Bright Data
+
+Other Python scrapers built the same way, with live-verified examples:
+
+- [URL to Markdown (Fetch API) for Python](https://github.com/brightdata/fetch-api-scraper)
+- [TikTok scraper for Python](https://github.com/brightdata/tiktok-scraper)
+- [ChatGPT scraper for Python](https://github.com/brightdata/chatgpt-scraper)
