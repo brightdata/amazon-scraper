@@ -2,6 +2,9 @@
 
 # Amazon scraper for Python
 
+Scrape Amazon products, reviews, sellers and search results to JSON with Python. No Product Advertising API key, no login, no browser.
+Built on the [Bright Data Amazon Scraper API](https://brightdata.com/products/web-scraper/amazon?utm_source=github). New accounts get 5,000 free credits a month.
+
 [![Live check](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml/badge.svg)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml)
 [![last verified](https://img.shields.io/badge/last%20verified-9%20Nov%202026-brightgreen)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->
 
