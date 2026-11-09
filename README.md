@@ -255,12 +255,12 @@ the table below reads the raw metadata endpoint instead.
 
 <!-- fields:start -->
 <details>
-<summary>All 121 fields, with type and description</summary>
+<summary>All 122 fields, with type and description</summary>
 
 Regenerated every day from the dataset schema, via the raw metadata
 endpoint, so it cannot go stale. A
 product carries the fields that apply to it: the sample file has 97
-of these 121, plus `timestamp` and `input`,
+of these 122, plus `timestamp` and `input`,
 which the schema does not list.
 
 | field | type | description |
@@ -386,6 +386,7 @@ which the schema does not list.
 | `is_aplus_premium` | boolean | Indicates whether the product is Premium A+ |
 | `buying_option_type` | text | Buying option type |
 | `amazon_checkout_promotion` | object | Product's checkout promotion |
+| `selected_format` | text | Selected format |
 
 </details>
 <!-- fields:end -->
