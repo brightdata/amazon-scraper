@@ -1,9 +1,9 @@
-[![Scrape Amazon data with the Amazon Scraper API: products, reviews, sellers, search. Collect or discover by ASIN, keyword and UPC. Start free.](.github/banner.png)](https://brightdata.com/products/web-scraper/amazon?utm_source=github)
+[![Scrape Amazon data with the Amazon Scraper API: products, reviews, sellers, search. Collect or discover by ASIN, keyword and UPC. Start free.](.github/banner.png)](https://brightdata.com/products/web-scraper/amazon?utm_source=github&utm_medium=referral&utm_content=amazon-scraper)
 
 # Amazon scraper for Python
 
 Scrape Amazon products, reviews, sellers and search results to JSON with Python. No Product Advertising API key, no login, no browser.
-Built on the [Bright Data Amazon Scraper API](https://brightdata.com/products/web-scraper/amazon?utm_source=github). New accounts get 5,000 free credits a month.
+Built on the [Bright Data Amazon Scraper API](https://brightdata.com/products/web-scraper/amazon?utm_source=github&utm_medium=referral&utm_content=amazon-scraper). New accounts get 5,000 free credits a month.
 
 [![Live check](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml/badge.svg)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml)
 [![last verified](https://img.shields.io/badge/last%20verified-9%20Nov%202026-brightgreen)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->
@@ -12,7 +12,7 @@ Built on the [Bright Data Amazon Scraper API](https://brightdata.com/products/we
 
 Amazon products, reviews, sellers and search results as JSON, in Python. No
 login, no browser. Built on the
-[Bright Data Amazon Scraper API](https://brightdata.com/products/web-scraper/amazon?utm_source=github).
+[Bright Data Amazon Scraper API](https://brightdata.com/products/web-scraper/amazon?utm_source=github&utm_medium=referral&utm_content=amazon-scraper).
 
 Uses the [Bright Data Python SDK](https://github.com/brightdata/sdk-python).
 Full API docs:
