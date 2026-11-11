@@ -6,7 +6,7 @@ Scrape Amazon products, reviews, sellers and search results to JSON with Python.
 Built on the [Bright Data Amazon Scraper API](https://brightdata.com/products/web-scraper/amazon?utm_source=github&utm_medium=referral&utm_content=amazon-scraper). New accounts get 5,000 free credits a month.
 
 [![Live check](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml/badge.svg)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml)
-[![last verified](https://img.shields.io/badge/last%20verified-10%20Nov%202026-brightgreen)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->
+[![last verified](https://img.shields.io/badge/last%20verified-11%20Nov%202026-brightgreen)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->
 
 [Quickstart](#how-to-scrape-amazon-product-data-with-python) · [No PA-API](#scrape-amazon-without-the-product-advertising-api) · [CLI](#bulk-amazon-scraper-cli) · [Endpoints](#scrape-amazon-products-reviews-sellers-and-search-results) · [Data](#amazon-product-data-fields-json) · [Errors](#amazon-scraper-errors) · [MCP and Claude Code](#amazon-mcp-server-and-claude-code-skill) · [Free credits](#is-this-amazon-scraper-free) · [Docs](https://docs.brightdata.com/products/scrapers/amazon/introduction) · [Support](#support)
 
