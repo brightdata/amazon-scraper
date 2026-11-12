@@ -1,4 +1,4 @@
-[![Scrape Amazon data with the Amazon Scraper API: products, reviews, sellers, search. Collect or discover by ASIN, keyword and UPC. Start free.](.github/banner.png)](https://brightdata.com/products/web-scraper/amazon?utm_source=github&utm_medium=referral&utm_content=amazon-scraper)
+[![Scrape Amazon data with the Amazon Scraper API: products, reviews, sellers, search. Collect or discover by ASIN, keyword and UPC. Start free.](https://raw.githubusercontent.com/brightdata/amazon-scraper/main/.github/banner.png)](https://brightdata.com/products/web-scraper/amazon?utm_source=github&utm_medium=referral&utm_content=amazon-scraper)
 
 # Amazon scraper for Python
 
@@ -6,7 +6,7 @@ Scrape Amazon products, reviews, sellers and search results to JSON with Python.
 Built on the [Bright Data Amazon Scraper API](https://brightdata.com/products/web-scraper/amazon?utm_source=github&utm_medium=referral&utm_content=amazon-scraper). New accounts get 5,000 free credits a month.
 
 [![Live check](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml/badge.svg)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml)
-[![last verified](https://img.shields.io/badge/last%20verified-11%20Nov%202026-brightgreen)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->
+[![last verified](https://img.shields.io/badge/last%20verified-11%20Nov%202026-brightgreen)](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml) <!-- verified: rewritten by the weekly run -->
 
 [Quickstart](#how-to-scrape-amazon-product-data-with-python) · [No PA-API](#scrape-amazon-without-the-product-advertising-api) · [CLI](#bulk-amazon-scraper-cli) · [Endpoints](#scrape-amazon-products-reviews-sellers-and-search-results) · [Data](#amazon-product-data-fields-json) · [Errors](#amazon-scraper-errors) · [MCP and Claude Code](#amazon-mcp-server-and-claude-code-skill) · [Free credits](#is-this-amazon-scraper-free) · [Docs](https://docs.brightdata.com/products/scrapers/amazon/introduction) · [Support](#support)
 
@@ -260,7 +260,7 @@ the table below reads the raw metadata endpoint instead.
 <details>
 <summary>All 122 fields, with type and description</summary>
 
-Regenerated every day from the dataset schema, via the raw metadata
+Regenerated every week from the dataset schema, via the raw metadata
 endpoint, so it cannot go stale. A
 product carries the fields that apply to it: the sample file has 97
 of these 122, plus `timestamp` and `input`,
@@ -421,7 +421,7 @@ which the schema does not list.
 ```
 
 The whole file, one product with every field, is
-[examples/sample_output.json](examples/sample_output.json).
+[examples/sample_output.json](https://github.com/brightdata/amazon-scraper/blob/main/examples/sample_output.json).
 
 </details>
 
@@ -491,13 +491,13 @@ credit per review, so the free credits cover 5,000 products a month.
 
 Bugs in this repo:
 [open an issue](https://github.com/brightdata/amazon-scraper/issues), and
-[CONTRIBUTING.md](CONTRIBUTING.md) says what to put in it.
+[CONTRIBUTING.md](https://github.com/brightdata/amazon-scraper/blob/main/CONTRIBUTING.md) says what to put in it.
 Anything about the API, your account or your credits:
 [Bright Data support](https://brightdata.zendesk.com/hc/en-us/requests/new).
 
 ## License
 
-[Apache 2.0](LICENSE).
+[Apache 2.0](https://github.com/brightdata/amazon-scraper/blob/main/LICENSE).
 
 ## Amazon scraper for Node.js
 

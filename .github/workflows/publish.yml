@@ -1,0 +1,38 @@
+# Publishes the package to PyPI when a GitHub Release is published.
+# Uses PyPI Trusted Publishing (OIDC), so the repo stores no PyPI token.
+# Release steps: bump __version__ in src/amazon_scraper/__init__.py,
+# add a CHANGELOG.md entry, then publish a GitHub Release tagged v<version>.
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+
+jobs:
+  publish:
+    name: Build and publish to PyPI
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: pypi
+      url: https://pypi.org/p/brightdata-amazon-scraper
+    permissions:
+      id-token: write  # required for Trusted Publishing
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97  # v7
+        with:
+          python-version: "3.12"
+      - name: Check the release tag matches the package version
+        run: |
+          version=$(python -c "import re;print(re.search(r'__version__ = \"(.+)\"', open('src/amazon_scraper/__init__.py').read())[1])")
+          if [ "${GITHUB_REF_NAME#v}" != "$version" ]; then
+            echo "::error::tag $GITHUB_REF_NAME does not match __version__ $version"; exit 1
+          fi
+      - name: Build the sdist and wheel
+        run: pip install build twine && python -m build && twine check --strict dist/*
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@7245906fb61fa33a13554f9d5fb856fe61758086  # v1.14.3

@@ -3,12 +3,23 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "amazon-scraper"
-version = "0.1.0"
+name = "brightdata-amazon-scraper"
+dynamic = ["version"]
 description = "Amazon scraper in Python: products, reviews, sellers and search as JSON, on the Bright Data Amazon Scraper API (Web Scraper API). No login, no browser. 5,000 free credits a month."
 readme = "README.md"
 license = { text = "Apache-2.0" }
 requires-python = ">=3.10"
+authors = [{ name = "Bright Data" }]
+keywords = ["amazon", "amazon-scraper", "scraper", "web-scraping", "bright-data", "amazon-api", "products", "reviews", "ecommerce"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Internet :: WWW/HTTP",
+]
 dependencies = ["brightdata-sdk>=2.5.2,<3", "rich>=13,<16"]
 
 [project.optional-dependencies]
@@ -19,6 +30,13 @@ amazon-scraper = "amazon_scraper.__main__:main"
 
 [project.urls]
 Homepage = "https://github.com/brightdata/amazon-scraper"
+Documentation = "https://docs.brightdata.com/products/scrapers/amazon/introduction"
+Source = "https://github.com/brightdata/amazon-scraper"
+Issues = "https://github.com/brightdata/amazon-scraper/issues"
+Changelog = "https://github.com/brightdata/amazon-scraper/blob/main/CHANGELOG.md"
+
+[tool.hatch.version]
+path = "src/amazon_scraper/__init__.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/amazon_scraper"]

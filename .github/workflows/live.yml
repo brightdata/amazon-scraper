@@ -1,20 +1,20 @@
 # The only workflow that calls the real API. Needs the BRIGHTDATA_API_TOKEN
 # secret and spends about one credit per product.
 #
-# Four ways it runs:
+# Three ways it runs:
 #   on every push to main: one product and the README's links, one credit
 #     and about a minute, so a broken commit shows up at once. A newer push
 #     cancels a run still going for an older commit.
 #   by hand, from the Actions tab, to scrape whatever products you choose
-#   every day at 07:20 UTC except Monday: one product, the async path, and the
+#   every Monday at 07:20 UTC: one product, the async path, and the
 #     field table, about two credits
-#   every Monday at 07:20 UTC: the same, plus every code block in the README,
+#   in the same Monday run: every code block in the README,
 #     about 12 credits
 #
 # A slow day at the API shows up as a red run. Rerun it before reading more
 # into it.
 #
-# The daily and Monday runs end by rewriting the "last verified" badge line at
+# The Monday run ends by rewriting the "last verified" badge line at
 # the top of README.md with today's date, and committing it if it changed. Push
 # runs never do this, so your own push is never followed by a bot commit. Only
 # the main repository commits; a copy of the repository just runs the checks.
@@ -26,7 +26,6 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: "20 7 * * 0,2-6"  # daily smoke, every day except Monday
     - cron: "20 7 * * 1"    # Monday: the whole README. Staggered across the
       # scraper repos (06:00, 06:20, 06:40, 07:00, 07:20) so four full matrices never
       # hit one account at once, which is what trips "too many requests".
@@ -45,7 +44,7 @@ on:
         default: ""
 
 permissions:
-  contents: write  # the daily check commits the regenerated field table
+  contents: write  # the weekly check commits the regenerated field table
 
 concurrency:
   group: live-${{ github.event_name }}-${{ github.ref }}
@@ -58,7 +57,7 @@ jobs:
     timeout-minutes: 20  # fetch, async path, table; the README blocks have their own jobs
     env:
       BRIGHTDATA_API_TOKEN: ${{ secrets.BRIGHTDATA_API_TOKEN }}
-      # On the daily schedule there are no inputs, so fall back to one cheap product.
+      # On the weekly schedule there are no inputs, so fall back to one cheap product.
       ASINS: ${{ inputs.asins || 'B0CRMZHDG8' }}
       # the async path and the field table run on every scheduled run and on request
       CHECK: ${{ github.event_name == 'schedule' || inputs.validate }}
@@ -135,7 +134,7 @@ jobs:
               print("</details>")
           PY
 
-      # The two daily checks. The products path is already covered by the step above.
+      # The two smoke checks. The products path is already covered by the step above.
       - name: Does the async trigger, status, fetch path still work?
         if: env.CHECK == 'true'
         run: |
@@ -200,7 +199,7 @@ jobs:
               "<details>",
               f"<summary>All {len(fields)} fields, with type and description</summary>",
               "",
-              "Regenerated every day from the dataset schema, via the raw metadata",
+              "Regenerated every week from the dataset schema, via the raw metadata",
               "endpoint, so it cannot go stale. A",
               f"product carries the fields that apply to it: the sample file has {known}",
               f"of these {len(fields)}{tail}",
@@ -225,7 +224,7 @@ jobs:
           git config user.name "anil-bd"
           git config user.email "210667061+anil-bd@users.noreply.github.com"
           git add README.md
-          git commit -m "Regenerate the field table from the live schema (automated daily check)"
+          git commit -m "Regenerate the field table from the live schema (automated weekly check)"
           git pull --rebase origin main
           git push
           echo "Committed the regenerated table."
@@ -388,7 +387,7 @@ jobs:
     #
     # `inputs.only` empty as well: a run of one block that passes is not the
     # README verified. A scheduled run has no inputs, where `inputs.only` is null
-    # and this comparison is still true, so the daily and Monday runs set it.
+    # and this comparison is still true, so the Monday run sets it.
     if: always() && !cancelled() && github.event_name != 'push' && inputs.only == '' && github.repository == 'brightdata/amazon-scraper'
     permissions:
       contents: write  # commits the badge line
@@ -420,7 +419,7 @@ jobs:
             label="last check failed"; color="red"
           fi
           today=$(date -u +'%-d %b %Y')
-          line="[![${label}](https://img.shields.io/badge/${label// /%20}-${today// /%20}-${color})](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml) <!-- verified: rewritten by the daily run -->"
+          line="[![${label}](https://img.shields.io/badge/${label// /%20}-${today// /%20}-${color})](https://github.com/brightdata/amazon-scraper/actions/workflows/live.yml) <!-- verified: rewritten by the weekly run -->"
           python3 - "$line" <<'PY'
           import pathlib, re, sys
           p = pathlib.Path("README.md"); t = p.read_text(encoding="utf-8")
@@ -434,7 +433,7 @@ jobs:
           git config user.email "210667061+anil-bd@users.noreply.github.com"
           # $label, not a fixed "Last verified": the log should not claim a
           # check passed on a day the badge went red.
-          git commit -qam "${label^} $today (automated daily check)"
+          git commit -qam "${label^} $today (automated weekly check)"
           git pull -q --rebase origin main
           git push -q origin main
           echo "badge now shows: $label, $today"

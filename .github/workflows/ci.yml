@@ -89,7 +89,7 @@ jobs:
           for line in command.splitlines():
               if line.startswith("amazon-scraper"):
                   continue  # run below, so the exit code can be checked
-              if line.startswith("pip install"):
+              if line.startswith("pip install") and "git+" in line:
                   # The repository is public, so this installs the exact line a
                   # reader pastes. On a private fork the URL is unreachable, and
                   # the check falls back to the checkout on its own.

@@ -105,7 +105,7 @@ The API returns rows in a different order on each run.
 - `pytest` runs offline and needs no token. `ruff check .` must pass.
 - CI installs from the README's own commands on an empty machine. A weekly
   workflow executes every fenced block in the README against the real API.
-- The field table and the "last verified" badge are rewritten by the daily run.
+- The field table and the "last verified" badge are rewritten by the weekly run.
   Do not edit either by hand.
 - Keep it small: 15 files and about 300 lines of Python. Do not add retries,
   deduplication, scheduling, databases, async examples or concurrency.
