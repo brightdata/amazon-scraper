@@ -81,6 +81,10 @@ jobs:
               *zendesk.com/*) continue ;;    # answers 403 to anything that is not a browser
               *mcp.brightdata.com/*) continue ;;  # carries a placeholder token; nothing to check without a real one
               *api.brightdata.com/*) continue ;;  # needs the token; the field-table step below calls it for real
+              *github.com/brightdata/amazon-scraper/blob/main/*)  # GitHub throttles blob pages for runners (503); check the file in the checkout
+                f=${url#*/blob/main/}; f=${f%%#*}
+                if [ -e "$f" ]; then echo "200 $url (in the checkout)"; else echo "::error::no such file in the repo: $f"; failed=1; fi
+                continue ;;
               *github.com/brightdata/amazon-scraper*) [ "$public" = "200" ] || continue ;;  # unreachable on a private fork
             esac
             code=$(curl -s -o /dev/null -L --retry 3 --max-time 30 -A "Mozilla/5.0" -w '%{http_code}' "$url" || echo 000)
